@@ -1,0 +1,1 @@
+This folder is for materials. We probably won't have many, since we'll be using mostly the standard sprite shader in this 2D game.

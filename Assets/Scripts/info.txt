@@ -1,0 +1,1 @@
+This folder will contain all our bonkers scripts. Might be further sorted if shit goes crazy.

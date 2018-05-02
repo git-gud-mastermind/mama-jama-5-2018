@@ -1,0 +1,1 @@
+This folder where all of our art assets will be stored. See subfolders for specifics.

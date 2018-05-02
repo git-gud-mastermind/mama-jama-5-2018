@@ -1,0 +1,1 @@
+Items in the Resources folder are ALWAYS loaded when the game is active. Convenient... and dangerous for memory management. Use judiciously.

@@ -1,0 +1,1 @@
+This folder is for textures to be used in materials, so they don't get lost in the sprites. Think bump maps and the like. We're probably not going to use it, but it's here if we need it.

@@ -1,0 +1,1 @@
+This folder is for the prefabs we're going to try to avoid making (but will need for things like on-screen card objects). Most of our differentiable data will be in the form of scriptable object instances, stored in the /Assets/Data subfolders.

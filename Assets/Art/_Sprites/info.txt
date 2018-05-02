@@ -1,0 +1,3 @@
+This folder contains the bulk of our art assets for use in-game. Underscore for primacy.
+
+.png is our drug of choice.

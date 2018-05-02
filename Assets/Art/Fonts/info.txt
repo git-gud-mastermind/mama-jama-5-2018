@@ -1,0 +1,1 @@
+This folder is for fonts. If we decide to not just use the default TextMeshPro typeface, we'll be glad to have somewhere to store (and be able to find) our font files.

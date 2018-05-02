@@ -1,0 +1,3 @@
+This folder contains the instances of scriptable objects we've made. It will probably end up very full.
+
+I'm also going to guess that we'll need a bunch more subfolders for our various types as the needs of the design becomes clear.

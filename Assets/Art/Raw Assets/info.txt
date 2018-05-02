@@ -1,0 +1,3 @@
+ARTISTS - This folder is for saving your Photoshop/ Illustrator/ etc. files, pre-export, so they're accessible to the team and we're all kept updated.
+
+Often, raw assets can be used directly in Unity. (Let's stick to the tried-and-true for now)

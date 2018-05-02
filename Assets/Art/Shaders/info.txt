@@ -1,0 +1,1 @@
+This folder is where we can save shaders. Super useful if we were doing crazy technical artistry. We're probably not.

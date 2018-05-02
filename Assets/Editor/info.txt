@@ -1,0 +1,1 @@
+This folder is used for tools and utilities that are only active in the editor (usually used in the inspector).
