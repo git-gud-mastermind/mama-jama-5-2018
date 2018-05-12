@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
+public delegate void EventAction(ref Card card);
 
 public abstract class Card : ScriptableObject {
 
@@ -17,8 +20,8 @@ public abstract class Card : ScriptableObject {
 	public EventAction whenCardIsDrawn;
 	public EventAction whenAttacked;
 
-	public boolean targetable; // Other cards can target this card
-	public boolean canTarget;  // This card can target other cards
+	public bool targetable; // Other cards can target this card
+	public bool canTarget;  // This card can target other cards
 
 	/**
 	 *  @function PlayCard

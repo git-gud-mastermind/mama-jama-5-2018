@@ -8,13 +8,12 @@ public class ChaosCard:Card {
 	public int attackPower;
 	public int health;
 
-	boolean targetable = true;
 
 	/**
 	 *  @function Defend
 	 *  @description What happens when this card is attacked.
 	 */
-	public void Defend (attackingCard) {
+	public void Defend () {
 
 	}
 
