@@ -2,12 +2,14 @@ using UnityEditor;
 using UnityEngine;
 using System.Collections;
 
-public enum ActionType {
-	DamageTarget,
-	HealTarget
-};
 
-public class GameAction : MonoBehaviour {
+[System.Serializable]
+public class GameAction {
+
+	public enum ActionType {
+		DamageTarget,
+		HealTarget
+	};
 
 	public ActionType type;
 

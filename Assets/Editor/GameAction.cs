@@ -10,27 +10,28 @@ public class GameActionEditor : Editor {
 		healingValue;
 
 	void OnEnable(){
-		// Set up SerializedProperties here
-		actionType   = serializedObject.FindProperty ("type");
-		damageValue  = serializedObject.FindProperty ("damageValue");
-		healingValue = serializedObject.FindProperty ("healingValue");
+		// Set up all Serialized Properties here
+		actionType   = serializedObject.FindProperty("type");
+		damageValue  = serializedObject.FindProperty("damageValue");
+		healingValue = serializedObject.FindProperty("healingValue");
 	}
 
 	public override void OnInspectorGUI () {
-		// Update serialized Property
 		serializedObject.Update();
 
+		// Always display the Action Type dropdown
 		EditorGUILayout.PropertyField( actionType );
 
+		// Get the index of the selected Action Type
 		GameAction.ActionType type = (GameAction.ActionType)actionType.enumValueIndex;
 
 		// Depending on the Action Type, show different fields
 		switch(type){
 			case GameAction.ActionType.DamageTarget:
-				EditorGUILayout.IntSlider(damageValue, 0, 100, new GUIContent("Damage Dealt"));
+				EditorGUILayout.PropertyField(damageValue);
 				break;
 			case GameAction.ActionType.HealTarget:
-				EditorGUILayout.IntSlider(healingValue, 0, 100, new GUIContent("Healing Done"));
+				EditorGUILayout.PropertyField(healingValue);
 				break;
 		}
 
