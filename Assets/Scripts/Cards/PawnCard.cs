@@ -5,10 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Pawn Card", menuName = "Pawn Card")]
 public class PawnCard:Card {
 
-	public int attackPower;
-	public int health;
-
-
 	/**
 	 *  @function Attack
 	 *  @description What happens when this card attacks another card.

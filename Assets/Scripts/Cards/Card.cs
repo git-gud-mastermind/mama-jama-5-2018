@@ -3,25 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public delegate void EventAction(ref Card card);
-
 public abstract class Card : ScriptableObject {
 
 	public Sprite cardArt;
 
-	public string name;
+	public string cardName;
 	public string type;
 	public string abilities;
 
 	public int manaCost;
+	public int attackPower;
+	public int health;
 
-	public EventAction whenPlayed;
-	public EventAction whenDestroyed;
-	public EventAction whenCardIsDrawn;
-	public EventAction whenAttacked;
+	private bool targetable; // Other cards can target this card
+	private bool canTarget;  // This card can target other cards
 
-	public bool targetable; // Other cards can target this card
-	public bool canTarget;  // This card can target other cards
+	public List<GameAction> whenPlayed;
+	public List<GameAction> whenDestroyed;
+	public List<GameAction> whenAttacked;
+	public List<GameAction> whenCardIsDrawn;
 
 	/**
 	 *  @function PlayCard
