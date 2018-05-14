@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public abstract class Card : ScriptableObject {
+public class Card : ScriptableObject {
 
 	public Sprite cardArt;
 
@@ -30,7 +30,7 @@ public abstract class Card : ScriptableObject {
 	 *  @function PlayCard
 	 *  @description Play this card from the player's hand and onto the field.
 	 */
-	public void PlayCard(){
+	public virtual void PlayCard(){
 		// this.whenPlayed
 	}
 
@@ -38,7 +38,7 @@ public abstract class Card : ScriptableObject {
 	 *  @function DestroyCard
 	 *  @description Remove this card from the battlefield.
 	 */
-	public void DestroyCard(){
+	public virtual void DestroyCard(){
 		// this.whenDestroyed
 	}
 

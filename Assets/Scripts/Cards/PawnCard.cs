@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Pawn Card", menuName = "Pawn Card")]
-public class PawnCard:Card {
+public class PawnCard : Card {
 
-	private override bool targetable = true;
-	private override bool canTarget = true;
+	private bool isTargetable = true;
+	private bool canTarget = true;
 
 	/**
 	 *  @function Attack
