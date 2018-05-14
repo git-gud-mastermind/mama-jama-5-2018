@@ -3,10 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Pawn Card", menuName = "Pawn Card")]
-public class PawnCard:Card {
+public class PawnCard : Card {
 
-	private override bool targetable = true;
-	private override bool canTarget = true;
+	/**
+	 *  @function Awake
+	 *  @description Set up default field values for this card type.
+	 */
+	public void Awake(){
+		this.isTargetable = true;
+		this.canTarget = true;
+	}
 
 	/**
 	 *  @function Attack
