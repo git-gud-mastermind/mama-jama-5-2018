@@ -5,12 +5,15 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Pawn Card", menuName = "Pawn Card")]
 public class PawnCard:Card {
 
+	private override bool targetable = true;
+	private override bool canTarget = true;
+
 	/**
 	 *  @function Attack
 	 *  @description What happens when this card attacks another card.
 	 */
 	public void Attack () {
-
+		// this.whenAttacking
 	}
 
 	/**
@@ -18,6 +21,6 @@ public class PawnCard:Card {
 	*  @description What happens when this card is attacked.
 	*/
 	public void Defend () {
-
+		// this.whenTargeted
 	}
 }

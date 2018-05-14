@@ -8,7 +8,7 @@ public abstract class Card : ScriptableObject {
 	public Sprite cardArt;
 
 	public string cardName;
-	public string type;
+	public string cardType;
 	public string abilities;
 
 	public int manaCost;
@@ -18,25 +18,28 @@ public abstract class Card : ScriptableObject {
 	private bool targetable; // Other cards can target this card
 	private bool canTarget;  // This card can target other cards
 
-	public List<GameAction> whenPlayed;
-	public List<GameAction> whenDestroyed;
-	public List<GameAction> whenAttacked;
-	public List<GameAction> whenCardIsDrawn;
+	// Event triggers
+	// @TODO: Implement these under the GameAction class (currently these are placeholder objects)
+	public object whenAttacking;
+	public object whenPlayed;
+	public object whenDestroyed;
+	public object whenTargeted;
+	public object whenDrawn;
 
 	/**
 	 *  @function PlayCard
-	 *  @description Play a card from the player's hand and onto the field.
+	 *  @description Play this card from the player's hand and onto the field.
 	 */
 	public void PlayCard(){
-
+		// this.whenPlayed
 	}
 
 	/**
 	 *  @function DestroyCard
-	 *  @description Remove a card from the battlefield.
+	 *  @description Remove this card from the battlefield.
 	 */
 	public void DestroyCard(){
-
+		// this.whenDestroyed
 	}
 
 }
