@@ -6,13 +6,13 @@ using System.Collections;
 [System.Serializable]
 public class GameAction {
 
-	public enum ActionType {
-		DamageTarget,
-		HealTarget
-	};
+    public enum ActionType {
+	    DamageTarget,
+	    HealTarget
+    };
 
-	public ActionType type;
+    public ActionType type;
 
-	public int damageValue;
+    public int damageValue;
     public int healingValue;
 }
