@@ -15,22 +15,21 @@ public class Card : ScriptableObject {
 	public int attackPower;
 	public int health;
 
-	public bool isTargetable { get; protected set; } // Other cards can target this card
-	public bool canTarget { get; protected set; }  // This card can target other cards
+    public virtual bool isTargetable { get { return false; } } // Other cards can target this card
+    public virtual bool canTarget { get { return false; } } // This card can target other cards
 
-	// Event triggers
-	// @TODO: Implement these under the GameAction class (currently these are placeholder objects)
-	public object whenAttacking;
-	public object whenPlayed;
-	public object whenDestroyed;
-	public object whenTargeted;
-	public object whenDrawn;
+    // Event triggers
+    public List<GameAction> whenAttacking;
+	public List<GameAction> whenPlayed;
+	public List<GameAction> whenDestroyed;
+	public List<GameAction> whenTargeted;
+	public List<GameAction> whenDrawn;
 
 	/**
 	 *  @function PlayCard
 	 *  @description Play this card from the player's hand and onto the field.
 	 */
-	public virtual void PlayCard(){
+	public virtual void PlayCard() {
 		// this.whenPlayed
 	}
 
@@ -38,7 +37,7 @@ public class Card : ScriptableObject {
 	 *  @function DestroyCard
 	 *  @description Remove this card from the battlefield.
 	 */
-	public virtual void DestroyCard(){
+	public virtual void DestroyCard() {
 		// this.whenDestroyed
 	}
 
