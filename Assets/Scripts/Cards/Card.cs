@@ -9,7 +9,7 @@ public abstract class Card : ScriptableObject {
 
 	public string cardName;
 	public string type;
-	public string abilities;
+	public string description;
 
 	public int manaCost;
 	public int attackPower;
