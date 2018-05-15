@@ -2,30 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class DisplayCard : MonoBehaviour {
 
 	public Card card;
 
-	public Text name;
-	public Text description;
+	public TextMeshProUGUI cardName;
+	public TextMeshProUGUI type;
+	public TextMeshProUGUI abilities;
 
-	public Text mana;
-	public Text attack;
-	public Text health;
+	public TextMeshProUGUI mana;
+	public TextMeshProUGUI attack;
+	public TextMeshProUGUI health;
 
 	public Image cardArt;
 
 	// Use this for initialization
 	void Start () {
-		name.text = card.name;
-		description.text = card.description;
+		cardName.text  = card.cardName;
+		type.text      = card.type;
+		abilities.text = card.abilities;
 
-		cardArt.sprite = card.cardArt;
-
-		mana.text = card.manaCost.ToString();
+		mana.text   = card.manaCost.ToString();
 		attack.text = card.attackPower.ToString();
 		health.text = card.health.ToString();
+
+		cardArt.sprite = card.cardArt;
 	}
 
 }
