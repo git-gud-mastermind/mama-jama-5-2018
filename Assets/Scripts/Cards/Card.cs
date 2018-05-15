@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Card : ScriptableObject {
+public abstract class Card : ScriptableObject {
 
 	public Sprite cardArt;
 
