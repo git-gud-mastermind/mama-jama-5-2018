@@ -14,14 +14,5 @@ public class GameAction {
 	public ActionType type;
 
 	public int damageValue;
-	public int healingValue;
-
-	public void Start(){
-
-	}
-
-	public void Update(){
-
-	}
-
+    public int healingValue;
 }

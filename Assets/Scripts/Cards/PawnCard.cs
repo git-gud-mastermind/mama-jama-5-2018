@@ -5,20 +5,14 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Pawn Card", menuName = "Pawn Card")]
 public class PawnCard : Card {
 
-	/**
-	 *  @function Awake
-	 *  @description Set up default field values for this card type.
-	 */
-	public void Awake(){
-		this.isTargetable = true;
-		this.canTarget = true;
-	}
+    public override bool isTargetable { get { return true; } } // Other cards can target this card
+    public override bool canTarget { get { return true; } } // This card can target other cards
 
-	/**
+    /**
 	 *  @function Attack
 	 *  @description What happens when this card attacks another card.
 	 */
-	public void Attack () {
+    public void Attack () {
 		// this.whenAttacking
 	}
 
