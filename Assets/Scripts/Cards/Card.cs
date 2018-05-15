@@ -8,8 +8,8 @@ public class Card : ScriptableObject {
 	public Sprite cardArt;
 
 	public string cardName;
-	public string cardType;
-	public string abilities;
+	public string type;
+	public string description;
 
 	public int manaCost;
 	public int attackPower;
