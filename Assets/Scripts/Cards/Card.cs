@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public abstract class Card : ScriptableObject {
+public class Card : ScriptableObject {
 
 	public Sprite cardArt;
 
@@ -15,28 +15,30 @@ public abstract class Card : ScriptableObject {
 	public int attackPower;
 	public int health;
 
-	private bool targetable; // Other cards can target this card
-	private bool canTarget;  // This card can target other cards
+    public virtual bool isTargetable { get { return false; } } // Other cards can target this card
+    public virtual bool canTarget { get { return false; } } // This card can target other cards
 
+    // Event triggers
+    public List<GameAction> whenAttacking;
 	public List<GameAction> whenPlayed;
 	public List<GameAction> whenDestroyed;
-	public List<GameAction> whenAttacked;
-	public List<GameAction> whenCardIsDrawn;
+	public List<GameAction> whenTargeted;
+	public List<GameAction> whenDrawn;
 
 	/**
 	 *  @function PlayCard
-	 *  @description Play a card from the player's hand and onto the field.
+	 *  @description Play this card from the player's hand and onto the field.
 	 */
-	public void PlayCard(){
-
+	public virtual void PlayCard() {
+		// this.whenPlayed
 	}
 
 	/**
 	 *  @function DestroyCard
-	 *  @description Remove a card from the battlefield.
+	 *  @description Remove this card from the battlefield.
 	 */
-	public void DestroyCard(){
-
+	public virtual void DestroyCard() {
+		// this.whenDestroyed
 	}
 
 }
