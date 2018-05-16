@@ -16,6 +16,8 @@ public abstract class Card : ScriptableObject {
 	public int attackPower;
 	public int health;
 
+	public bool isActive;
+
   public virtual bool isTargetable { get { return false; } } // Other cards can target this card
   public virtual bool canTarget { get { return false; } } // This card can target other cards
 
