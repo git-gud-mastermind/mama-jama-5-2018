@@ -11,14 +11,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bef7bbcd37c75064dad81e5f407169e2, type: 3}
   m_Name: Test Pawn Card
   m_EditorClassIdentifier: 
-  cardArt: {fileID: 0}
-  cardName: 
-  type: 
-  description: 
-  manaCost: 0
-  attackPower: 0
-  health: 0
+  cardArt: {fileID: 21300000, guid: 416d5fa0a47ff8449b00792b8b64db78, type: 3}
+  cardName: Test Name
+  type: Test Type
+  abilities: This is a card description.
+  manaCost: 7
+  attackPower: 3
+  health: 4
+  whenAttacking: []
   whenPlayed: []
   whenDestroyed: []
-  whenAttacked: []
-  whenCardIsDrawn: []
+  whenTargeted: []
+  whenDrawn: []
