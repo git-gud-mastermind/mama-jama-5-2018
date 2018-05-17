@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bef7bbcd37c75064dad81e5f407169e2, type: 3}
+  m_Name: Test Pawn Card
+  m_EditorClassIdentifier: 
+  cardArt: {fileID: 21300000, guid: 416d5fa0a47ff8449b00792b8b64db78, type: 3}
+  cardName: Test Name
+  type: Test Type
+  abilities: This is a card description.
+  manaCost: 7
+  attackPower: 3
+  health: 4
+  whenAttacking: []
+  whenPlayed: []
+  whenDestroyed: []
+  whenTargeted: []
+  whenDrawn: []
