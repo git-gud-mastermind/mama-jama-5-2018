@@ -14,13 +14,10 @@ public class Player : MonoBehaviour {
 
 	public Deck deck;
 	public List<Card> hand;
+	public List<Card> cardsOnField; // Active cards on the game board
 
 	public int startingHandSize = 4;
 	public int maxHandSize;
-
-	// Events!
-	// @TODO: Figure out how to implement these as GameActions?
-	public object whenTurnIsStarted;
 
 	// Use this for initialization
 	void Start () {
@@ -61,13 +58,10 @@ public class Player : MonoBehaviour {
 			hand.Add(deck.DrawCard());
 		}
 
-		// Set all player's inactive cards to active
-		// for( card in cardsOnField ){
-		//    card.isActive = true;
-		// }
-
-		// Trigger any events
-		// whenTurnIsStarted
+		for(card in cardsOnField){
+		   card.isActive = true;   // Set all player's inactive cards to active
+				card.whenTurnIsStarted; // Trigger any events this card has on turn start
+		}
 	}
 
 	/**
