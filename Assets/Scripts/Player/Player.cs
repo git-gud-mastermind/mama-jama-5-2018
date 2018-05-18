@@ -58,9 +58,9 @@ public class Player : MonoBehaviour {
 			hand.Add(deck.DrawCard());
 		}
 
-		for(card in cardsOnField){
-		   card.isActive = true;   // Set all player's inactive cards to active
-				card.whenTurnIsStarted; // Trigger any events this card has on turn start
+		foreach(Card card in cardsOnField){
+			card.isActiveCard = true; // Set all player's inactive cards to active
+			// card.whenTurnIsStarted;  // Trigger any events this card has on turn start
 		}
 	}
 

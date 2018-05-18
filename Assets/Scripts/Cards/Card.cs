@@ -43,7 +43,7 @@ public abstract class Card : ScriptableObject {
 	 *  @description Remove this card from the battlefield.
 	 */
 	public virtual void DestroyCard() {
-		whenDestroyed
+		// whenDestroyed
 	}
 
 }
