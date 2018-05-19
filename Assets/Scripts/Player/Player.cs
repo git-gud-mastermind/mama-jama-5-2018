@@ -40,6 +40,8 @@ public class Player : MonoBehaviour {
 		if(currentMana >= cardToPlay.manaCost){
 			// Reduce mana
 			currentMana -= cardToPlay.manaCost;
+			// Remove card from hand
+			hand.Remove(Card);
 			// Play the card and trigger its abilities
 			cardToPlay.PlayCard();
 		}
