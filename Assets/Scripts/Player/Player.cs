@@ -12,7 +12,7 @@ public class Player : MonoBehaviour {
 	public int startingMana = 3;
 	public int maxMana = 7;
 
-	public int turnCounter;
+	public int turnCounter; // How many turns have passed
 
 	public Deck deck;
 	public List<Card> hand;
