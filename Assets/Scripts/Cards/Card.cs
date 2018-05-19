@@ -28,6 +28,7 @@ public abstract class Card : ScriptableObject {
 	public List<GameAction> whenTargeted;
 	public List<GameAction> whenDrawn;
 	public List<GameAction> whenTurnIsStarted;
+	public List<GameAction> whenTurnIsEnded;
 
 	/**
 	 *  @function PlayCard
