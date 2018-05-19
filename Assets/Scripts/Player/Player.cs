@@ -12,6 +12,8 @@ public class Player : MonoBehaviour {
 	public int startingMana = 3;
 	public int maxMana = 7;
 
+	public int turnCounter; // How many turns have passed
+
 	public Deck deck;
 	public List<Card> hand;
 	public List<Card> cardsOnField; // Active cards on the game board
@@ -23,6 +25,7 @@ public class Player : MonoBehaviour {
 	void Start () {
 		currentMana = startingMana;
 		currentHealth = startingHealth;
+		turnCounter = 0;
 
 		deck.ShuffleDeck();
 		// Draw a number of cards equal to the starting hand size
@@ -40,6 +43,8 @@ public class Player : MonoBehaviour {
 		if(currentMana >= cardToPlay.manaCost){
 			// Reduce mana
 			currentMana -= cardToPlay.manaCost;
+			// Remove card from hand
+			hand.Remove(cardToPlay);
 			// Play the card and trigger its abilities
 			cardToPlay.PlayCard();
 		}
@@ -50,6 +55,9 @@ public class Player : MonoBehaviour {
 	 *  @description Called at the start of a player's turn.
 	 */
 	public void StartTurn(){
+		// Increment turn turnCounter
+		turnCounter++;
+
 		// Reset mana counter
 		currentMana = manaThisTurn;
 
@@ -69,7 +77,9 @@ public class Player : MonoBehaviour {
 	 *  @description Called at the end of a player's turn.
 	 */
 	public void EndTurn(){
-
+		foreach(Card card in cardsOnField){
+			// card.whenTurnIsEnded // Trigger any events on turn end for
+		}
 	}
 
 	/**
