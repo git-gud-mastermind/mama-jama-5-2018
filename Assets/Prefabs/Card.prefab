@@ -277,6 +277,7 @@ GameObject:
   - component: {fileID: 224019146354273538}
   - component: {fileID: 222786325066150808}
   - component: {fileID: 114834891599220602}
+  - component: {fileID: 114754259801416330}
   m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
@@ -943,6 +944,25 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114754259801416330
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1949439815711240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bf522486d083984eaad192ad851a850, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  card: {fileID: 0}
+  cardName: {fileID: 114413528462610878}
+  type: {fileID: 114459928232476236}
+  abilities: {fileID: 114530795267993602}
+  mana: {fileID: 114521488250876566}
+  attack: {fileID: 114795411440636154}
+  health: {fileID: 114809010997879286}
+  cardArt: {fileID: 114328721426073304}
 --- !u!114 &114767151273278788
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1372,7 +1392,7 @@ RectTransform:
   m_GameObject: {fileID: 1949439815711240}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 224303262247551200}
   - {fileID: 224014654675031278}
