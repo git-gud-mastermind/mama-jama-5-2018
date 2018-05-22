@@ -24,6 +24,10 @@ public class ConnectionHandler : Photon.PunBehaviour {
 
 	public string connectionSuccessText;
 
+    #if UNITY_EDITOR
+    public bool allowSinglePlayer = false;
+    #endif
+
 	#region Unity Callbacks
 
 	private void Awake()
@@ -48,7 +52,16 @@ public class ConnectionHandler : Photon.PunBehaviour {
 	{
 		if (isInRoom)
 		{
-			if (PhotonNetwork.room.PlayerCount == 2 && !startMatch)
+		    int playerCountNeeded = 2;
+
+            #if UNITY_EDITOR
+		    if (allowSinglePlayer)
+		    {
+		        playerCountNeeded = 1;
+		    }
+            #endif
+
+            if (PhotonNetwork.room.PlayerCount >= playerCountNeeded && !startMatch)
 			{
 				infoText.SetText(connectionSuccessText);
 
