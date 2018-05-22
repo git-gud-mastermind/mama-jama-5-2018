@@ -66,6 +66,20 @@ public class ConnectionHandler : Photon.PunBehaviour {
 				infoText.SetText(connectionSuccessText);
 
 				startMatch = true;
+                //sync state with connect clients
+                //https://doc.photonengine.com/en-us/pun/current/gameplay/synchronization-and-state
+                if (PhotonNetwork.isMasterClient)
+			    {
+			        if (!PhotonNetwork.room.CustomProperties.ContainsKey("MatchState"))
+			        {
+			            PhotonNetwork.room.CustomProperties.Add("MatchState", "Wait");
+
+                    }
+
+			        PhotonNetwork.room.CustomProperties["MatchState"] = "Start";
+                    PhotonNetwork.room.SetCustomProperties(PhotonNetwork.room.CustomProperties);
+
+			    }
 
 				//Start game
 			}
@@ -105,6 +119,11 @@ public class ConnectionHandler : Photon.PunBehaviour {
 			PhotonNetwork.ConnectUsingSettings(gameVersion);
 		}
 	}
+
+    public void Concede()
+    {
+        
+    }
 
 	#endregion
 
