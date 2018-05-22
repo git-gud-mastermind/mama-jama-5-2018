@@ -10,6 +10,8 @@ public class ConnectionHandler : Photon.PunBehaviour {
 	public List<Selectable> connectionReqdObject = new List<Selectable>();
 	List<bool> croStartingStates = new List<bool>();
 
+	bool isInRoom = false, startMatch = false;
+
 	public TextTweening infoText;
 
 	public List<string> waitingTexts = new List<string>()
@@ -19,6 +21,8 @@ public class ConnectionHandler : Photon.PunBehaviour {
 		"..Waiting for an idle god..",
 		"...Waiting for an idle god..."
 	};
+
+	public string connectionSuccessText;
 
 	#region Unity Callbacks
 
@@ -37,6 +41,21 @@ public class ConnectionHandler : Photon.PunBehaviour {
 		{	
 			croStartingStates.Add(item.interactable);
 			item.interactable = false;
+		}
+	}
+
+	private void Update()
+	{
+		if (isInRoom)
+		{
+			if (PhotonNetwork.room.PlayerCount == 2 && !startMatch)
+			{
+				infoText.SetText(connectionSuccessText);
+
+				startMatch = true;
+
+				//Start game
+			}
 		}
 	}
 
@@ -83,6 +102,8 @@ public class ConnectionHandler : Photon.PunBehaviour {
 	{
 		infoText.SetText("Welcome");
 
+		isInRoom = startMatch = false;
+
 		//Set our UI interactability to its proper starting state
 		connectionReqdObject.ForEach(obj => obj.interactable = croStartingStates [connectionReqdObject.IndexOf(obj)]);
 	}
@@ -105,6 +126,8 @@ public class ConnectionHandler : Photon.PunBehaviour {
 		{
 			infoText.SetTextOnLoop(waitingTexts, 0.3f);
 		}
+
+		isInRoom = true;
 	}
 
 	#endregion

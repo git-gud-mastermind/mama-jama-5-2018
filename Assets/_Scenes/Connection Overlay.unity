@@ -1944,6 +1944,7 @@ MonoBehaviour:
   - .Waiting for an idle god.
   - ..Waiting for an idle god..
   - '...Waiting for an idle god...'
+  connectionSuccessText: Call on the Fates
 --- !u!1 &1333817795
 GameObject:
   m_ObjectHideFlags: 0
