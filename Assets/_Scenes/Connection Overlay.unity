@@ -1935,7 +1935,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameVersion: 0
-  connectionReqdObject:
+  connectionReqdObjects:
   - {fileID: 838287783}
   - {fileID: 2109026354}
   infoText: {fileID: 719853889}
