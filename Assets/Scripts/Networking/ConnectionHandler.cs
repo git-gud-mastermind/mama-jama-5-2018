@@ -57,7 +57,7 @@ public class ConnectionHandler : Photon.PunBehaviour {
     #endif
 
     public UnityEvent OnRoomReady;
-    public UnityEventMatchState OnMatchStateChange;
+    public UnityEventMatchState OnMatchStateChange = new UnityEventMatchState();
     public TesterMenu TesterMenuPrefab;
     public TesterMenu TesterMenu;
 
@@ -111,7 +111,7 @@ public class ConnectionHandler : Photon.PunBehaviour {
                 if (PhotonNetwork.isMasterClient)
 			    {
 			        var props = new Hashtable();
-			        props.Add((int)PhotonPropId.MatchState, (int)MatchState.Start);
+			        props.Add(PhotonPropId.MatchState, MatchState.Start);
                     PhotonNetwork.room.SetCustomProperties(props);
 
 			    }
@@ -173,7 +173,7 @@ public class ConnectionHandler : Photon.PunBehaviour {
         {
 
             var props = new Hashtable();
-            props.Add((int)PhotonPropId.MatchState, (int)MatchState.End);
+            props.Add(PhotonPropId.MatchState, (int)MatchState.End);
 
             PhotonNetwork.room.SetCustomProperties(props);
 
@@ -240,32 +240,40 @@ public class ConnectionHandler : Photon.PunBehaviour {
     /// <param name="propertiesThatChanged"></param>
     public override void OnPhotonCustomRoomPropertiesChanged(Hashtable propertiesThatChanged)
     {
-        
-        var matchState = (MatchState)propertiesThatChanged[(int)PhotonPropId.MatchState];
-
-        //checking some states
-        switch (matchState)
+        foreach (var prop in propertiesThatChanged)
         {
-            case MatchState.Start:
-                if (OnRoomReady != null)
-                {
-                    OnRoomReady.Invoke();
-                }
-
-                TesterMenu = Instantiate(TesterMenuPrefab, Canvas.transform);
-                TesterMenu.ConnectionHandler = this;
-                OnMatchStateChange.AddListener(TesterMenu.OnMatchState);
-                break;
-            case MatchState.Play:
-                break;
+            Debug.Log(prop.Key.ToString() + " " + prop.Value.ToString());
         }
 
-        if (OnMatchStateChange != null)
+        //check properties to load stuff
+        if (propertiesThatChanged.ContainsKey(PhotonPropId.MatchState))
         {
-            OnMatchStateChange.Invoke(matchState);
-        }
+            var matchState = (MatchState)propertiesThatChanged[PhotonPropId.MatchState];
+
+            //checking some states
+            switch (matchState)
+            {
+                case MatchState.Start:
+                    if (OnRoomReady != null)
+                    {
+                        OnRoomReady.Invoke();
+                    }
+
+                    TesterMenu = Instantiate(TesterMenuPrefab, Canvas.transform);
+                    TesterMenu.ConnectionHandler = this;
+                    OnMatchStateChange.AddListener(TesterMenu.OnMatchState);
+                    break;
+                case MatchState.Play:
+                    break;
+            }
+
+            if (OnMatchStateChange != null)
+            {
+                OnMatchStateChange.Invoke(matchState);
+            }
             
-        
+
+        }
     }
 
     #endregion

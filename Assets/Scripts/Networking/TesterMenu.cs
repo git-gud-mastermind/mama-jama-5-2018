@@ -20,11 +20,10 @@ public class TesterMenu : MonoBehaviour
 	    //_connectionHandler = Object.FindObjectOfType<ConnectionHandler>();
 	    startTime = Time.time;
 	    var roomProperties = PhotonNetwork.room.CustomProperties;
-	    if (roomProperties.ContainsKey((int)PhotonPropId.MatchState))
+	    if (roomProperties.ContainsKey(PhotonPropId.MatchState))
 	    {
-	        var matchState = (MatchState)roomProperties[(int)PhotonPropId.MatchState];
-	        StateText.text = matchState.ToString();
-
+	        var matchState = (MatchState)roomProperties[PhotonPropId.MatchState];
+	        OnMatchState(matchState);
 
 	    }
     }
@@ -33,7 +32,7 @@ public class TesterMenu : MonoBehaviour
 	void Update () {
 	    var roomProperties = PhotonNetwork.room.CustomProperties;
 	    MatchState matchState = MatchState.Wait;
-	    if (roomProperties.ContainsKey((int)PhotonPropId.MatchState))
+	    if (roomProperties.ContainsKey(PhotonPropId.MatchState))
 	    {
 	        matchState = (MatchState)roomProperties[PhotonPropId.MatchState];
 
@@ -54,13 +53,13 @@ public class TesterMenu : MonoBehaviour
 
     void StartingState()
     {
-        if (startTime - Time.time > 1.5f)
+        if (Time.time - startTime > 1.5f)
         {
             //switch to play
             if (PhotonNetwork.isMasterClient)
             {
                 var props = new Hashtable();
-                props.Add((int)PhotonPropId.MatchState, (int)MatchState.Play);
+                props.Add(PhotonPropId.MatchState, MatchState.Play);
                 PhotonNetwork.room.SetCustomProperties(props);
 
             }
@@ -79,6 +78,6 @@ public class TesterMenu : MonoBehaviour
 
     public void OnMatchState(MatchState matchState)
     {
-
+        StateText.text = matchState.ToString();
     }
 }

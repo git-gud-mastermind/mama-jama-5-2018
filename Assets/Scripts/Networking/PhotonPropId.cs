@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Photon custom properties ids
-/// </summary>
-[System.Serializable]
-public enum PhotonPropId {
-    MatchState = 0,
+
+//Photon custom properties ids
+
+public class PhotonPropId
+{
+    public const string MatchState = "MatchState";
 }
