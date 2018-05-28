@@ -1,7 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
+
+//easy to grab network match states
+[System.Serializable]
+public enum MatchState
+{
+    Wait = 0,
+    Start,
+    Play,
+    End
+}
+
+[SerializeField]
+public class UnityEventMatchState : UnityEvent<MatchState>
+{
+
+}
 
 public class ConnectionHandler : Photon.PunBehaviour {
 
@@ -16,6 +34,8 @@ public class ConnectionHandler : Photon.PunBehaviour {
 
 	bool isInRoom = false;
 	bool startMatch = false;
+
+    public Canvas Canvas;
 
 	[Tooltip("The UI text object's tween controller that will display current network state.")]
 	public TextTweening infoText;
@@ -32,15 +52,21 @@ public class ConnectionHandler : Photon.PunBehaviour {
 	public string connectionSuccessText;
 
     #if UNITY_EDITOR
+    //lets us test multiplayer stuff in editor alone
     public bool allowSinglePlayer = false;
     #endif
 
-	#endregion
+    public UnityEvent OnRoomReady;
+    public UnityEventMatchState OnMatchStateChange;
+    public TesterMenu TesterMenuPrefab;
+    public TesterMenu TesterMenu;
+
+    #endregion
 
 
-	#region Unity Callbacks
+    #region Unity Callbacks
 
-	private void Awake()
+    private void Awake()
 	{
 		PhotonNetwork.autoJoinLobby = false;
 
@@ -68,6 +94,7 @@ public class ConnectionHandler : Photon.PunBehaviour {
 		    int playerCountNeeded = 2;
 
             #if UNITY_EDITOR
+            //in editor single testing
 		    if (allowSinglePlayer)
 		    {
 		        playerCountNeeded = 1;
@@ -83,20 +110,17 @@ public class ConnectionHandler : Photon.PunBehaviour {
                 //https://doc.photonengine.com/en-us/pun/current/gameplay/synchronization-and-state
                 if (PhotonNetwork.isMasterClient)
 			    {
-			        if (!PhotonNetwork.room.CustomProperties.ContainsKey("MatchState"))
-			        {
-			            PhotonNetwork.room.CustomProperties.Add("MatchState", "Wait");
-
-                    }
-
-			        PhotonNetwork.room.CustomProperties["MatchState"] = "Start";
-                    PhotonNetwork.room.SetCustomProperties(PhotonNetwork.room.CustomProperties);
+			        var props = new Hashtable();
+			        props.Add((int)PhotonPropId.MatchState, (int)MatchState.Start);
+                    PhotonNetwork.room.SetCustomProperties(props);
 
 			    }
 
 				//Start game
 			}
-		}
+
+        }
+
 	}
 
 	#endregion
@@ -135,18 +159,37 @@ public class ConnectionHandler : Photon.PunBehaviour {
 
     public void Concede()
     {
-        
+        photonView.RPC("ConcedeRpc", PhotonTargets.All, PhotonNetwork.player.ID);
     }
 
-	#endregion
+    /// <summary>
+    /// remote call across players
+    /// </summary>
+    /// <param name="playerId">player id for who is conceding</param>
+    public void ConcedeRpc(int playerId)
+    {
+        Debug.Log("Player: " + playerId + " conceded the match");
+        if (PhotonNetwork.isMasterClient)
+        {
+
+            var props = new Hashtable();
+            props.Add((int)PhotonPropId.MatchState, (int)MatchState.End);
+
+            PhotonNetwork.room.SetCustomProperties(props);
+
+        }
+
+    }
+
+    #endregion
 
 
-	#region Photon.PunBehaviour CallBacks
+    #region Photon.PunBehaviour CallBacks
 
-	/// <summary>
-	/// We receive this from Photon when the server recognizes us
-	/// </summary>
-	public override void OnConnectedToPhoton()
+    /// <summary>
+    /// We receive this from Photon when the server recognizes us
+    /// </summary>
+    public override void OnConnectedToPhoton()
 	{
 		infoText.SetText("Welcome");
 
@@ -191,5 +234,39 @@ public class ConnectionHandler : Photon.PunBehaviour {
 		isInRoom = true;
 	}
 
-	#endregion
+    /// <summary>
+    /// called when
+    /// </summary>
+    /// <param name="propertiesThatChanged"></param>
+    public override void OnPhotonCustomRoomPropertiesChanged(Hashtable propertiesThatChanged)
+    {
+        
+        var matchState = (MatchState)propertiesThatChanged[(int)PhotonPropId.MatchState];
+
+        //checking some states
+        switch (matchState)
+        {
+            case MatchState.Start:
+                if (OnRoomReady != null)
+                {
+                    OnRoomReady.Invoke();
+                }
+
+                TesterMenu = Instantiate(TesterMenuPrefab, Canvas.transform);
+                TesterMenu.ConnectionHandler = this;
+                OnMatchStateChange.AddListener(TesterMenu.OnMatchState);
+                break;
+            case MatchState.Play:
+                break;
+        }
+
+        if (OnMatchStateChange != null)
+        {
+            OnMatchStateChange.Invoke(matchState);
+        }
+            
+        
+    }
+
+    #endregion
 }
