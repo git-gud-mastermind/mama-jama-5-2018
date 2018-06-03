@@ -119,13 +119,14 @@ public class CardView : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 									if(cardComponent.player != this.player && isOnBoard == true){
 										cardComponent.DealDamage(this.card.attackPower);
 									}
+
+									break;
 								}
 
 								// check if we can drop card here
                 var boardPlacement = result.gameObject.GetComponent<PawnBoardVisual>();
-                if (boardPlacement != null)
+                if (boardPlacement != null && !isOnBoard)
                 {
-
                     if (!CheckGameRules() || !boardPlacement.isPlayerBoard)
                     {
                         break;
@@ -136,7 +137,6 @@ public class CardView : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 										isOnBoard = true;
 										break;
                 }
-
 
             }
         }
