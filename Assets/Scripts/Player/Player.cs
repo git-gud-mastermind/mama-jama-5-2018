@@ -31,10 +31,15 @@ public class Player {
 		deck = GameManager.instance.CreateInstance<Deck>(newDeck);
 		deck.ShuffleDeck();
 
+		// Instantiate Hand
+		hand = new List<Card>();
+
 		// Draw a number of cards equal to the starting hand size
 		for(int i = 0; i < startingHandSize; i++){
-			hand.Add(deck.DrawCard());
+			var drawnCard = GameManager.instance.CreateInstance<Card>(deck.DrawCard());
+			hand.Add(drawnCard);
 		}
+
 	}
 
 	/**

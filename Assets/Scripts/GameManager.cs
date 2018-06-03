@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public CardView cardPrefab;
+    public GameObject cardPrefab;
 
     public HandView handView; // Attached in the editor
 
@@ -34,6 +34,12 @@ public class GameManager : MonoBehaviour
         _players = new List<Player>();
         Player p1 = new Player();
         p1.Init(playerOneDeck);
+
+        foreach(var card in p1.hand){
+          GameObject cardView = Instantiate(cardPrefab);
+          handView.AddCardToHand(cardView);
+        }
+
         _players.Add(p1);
   	}
 

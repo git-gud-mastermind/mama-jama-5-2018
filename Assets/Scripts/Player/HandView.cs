@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HandView : MonoBehaviour {
 
@@ -14,10 +15,7 @@ public class HandView : MonoBehaviour {
 
 	}
 
-	public Card AddCardToHand(Card cardDrawn){
-		// newCard = Instantiate(CardView);                   // Instantiate Prefab
-		// newCard.getComponent<CardView>.setCard(cardDrawn); // Assign ScriptableObject to prefab
-		// return newCard;
-		return cardDrawn;
+	public void AddCardToHand(GameObject cardDrawn){
+		cardDrawn.transform.SetParent(transform);
 	}
 }
