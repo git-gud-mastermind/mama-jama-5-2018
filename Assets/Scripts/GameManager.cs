@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour
     List<Player> _players;
     private Player _currentPlayer;
 
+    public Deck playerOneDeck;
+    public Deck playerTwoDeck;
+
     // GameManager singleton access
     public static GameManager instance { get; private set; }
 
@@ -32,6 +35,8 @@ public class GameManager : MonoBehaviour
         Player p = new Player();
         p.Init();
         _players.Add(p);
+
+        GameObject.Instantiate(playerOneDeck);
   	}
 
     public void EndTurn() {

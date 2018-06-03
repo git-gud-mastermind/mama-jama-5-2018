@@ -27,10 +27,10 @@ public class Player {
 		currentHealth = startingHealth;
 		turnCounter = 0;
 
-		deck.ShuffleDeck();
+		// deck.ShuffleDeck();
 		// Draw a number of cards equal to the starting hand size
 		for(int i = 0; i < startingHandSize; i++){
-			hand.Add(deck.DrawCard());
+			// hand.Add(deck.DrawCard());
 		}
 	}
 
