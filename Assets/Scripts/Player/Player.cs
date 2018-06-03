@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour {
+public class Player {
 
 	public int currentHealth;
 	public int startingHealth = 30;
@@ -22,15 +22,15 @@ public class Player : MonoBehaviour {
 	public int maxHandSize;
 
 	// Use this for initialization
-	void Start () {
+	public void Init() {
 		currentMana = startingMana;
 		currentHealth = startingHealth;
 		turnCounter = 0;
 
-		deck.ShuffleDeck();
+		// deck.ShuffleDeck();
 		// Draw a number of cards equal to the starting hand size
 		for(int i = 0; i < startingHandSize; i++){
-			hand.Add(deck.DrawCard());
+			// hand.Add(deck.DrawCard());
 		}
 	}
 
@@ -80,6 +80,17 @@ public class Player : MonoBehaviour {
 		foreach(Card card in cardsOnField){
 			// card.whenTurnIsEnded // Trigger any events on turn end for
 		}
+	}
+
+
+	/**
+	 *  @function DrawCard
+	 *  @description Draw a card for this player
+	 */
+	public void DrawCard(){
+			// newCard = HandView.AddCardToHand(deck.DrawCard());
+			// hand = gameObject.getComponent<HorizontalLayoutGroup>(); // Get the layout group for the hand
+			// hand.add(newCard); // Add card to hand
 	}
 
 	/**
