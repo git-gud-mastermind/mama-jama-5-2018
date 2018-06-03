@@ -53,8 +53,6 @@ public class Player {
 			currentMana -= cardToPlay.manaCost;
 			// Remove card from hand
 			hand.Remove(cardToPlay);
-			// Play the card and trigger its abilities
-			cardToPlay.PlayCard();
 		}
 	}
 

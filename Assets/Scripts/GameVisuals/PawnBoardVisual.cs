@@ -7,13 +7,15 @@ public class PawnBoardVisual : MonoBehaviour
 
     public RectTransform PawnArea;
 
+    public bool isPlayerBoard;
+
 	// Use this for initialization
 	void Start () {
-		
+
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-		
+
 	}
 }

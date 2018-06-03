@@ -38,6 +38,21 @@ public class CardView : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 			cardArt.sprite = card.cardArt;
 		}
 
+		/**
+		 *  @function DealDamage
+		 *  @desc     Deal damage to this card. Destroy if out of health.
+		 */
+		public void DealDamage(int damageDealt){
+			this.card.health = this.card.health - damageDealt;
+
+			if(this.card.health <= 0){
+				Destroy(gameObject); // Destroy card if out of health
+			}
+
+			// Update health display
+			health.text = this.card.health.ToString();
+		}
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (_canvas == null)
@@ -88,12 +103,23 @@ public class CardView : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         {
             foreach (var result in raycastResults)
             {
-                //check if pawn here
+								// Ignore result if it is the card we are dragging
+								if (result.gameObject == gameObject) {
+                  continue;
+                }
+
+								//check if pawn here
+								var cardComponent = result.gameObject.GetComponent<CardView>();
+								if (cardComponent != null) {
+									cardComponent.DealDamage(this.card.attackPower);
+								}
+
+								// check if we can drop card here
                 var boardPlacement = result.gameObject.GetComponent<PawnBoardVisual>();
                 if (boardPlacement != null)
                 {
 
-                    if (!CheckGameRules())
+                    if (!CheckGameRules() || !boardPlacement.isPlayerBoard)
                     {
                         break;
                     }
