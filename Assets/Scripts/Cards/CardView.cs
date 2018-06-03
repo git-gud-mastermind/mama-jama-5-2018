@@ -27,16 +27,16 @@ public class CardView : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     // Use this for initialization
     void Start () {
-		cardName.text  = card.cardName;
-		type.text      = card.type;
-		abilities.text = card.abilities;
+			cardName.text  = card.cardName;
+			type.text      = card.type;
+			abilities.text = card.abilities;
 
-		mana.text   = card.manaCost.ToString();
-		attack.text = card.attackPower.ToString();
-		health.text = card.health.ToString();
+			mana.text   = card.manaCost.ToString();
+			attack.text = card.attackPower.ToString();
+			health.text = card.health.ToString();
 
-		cardArt.sprite = card.cardArt;
-	}
+			cardArt.sprite = card.cardArt;
+		}
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -92,7 +92,7 @@ public class CardView : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
                 var boardPlacement = result.gameObject.GetComponent<PawnBoardVisual>();
                 if (boardPlacement != null)
                 {
-                    
+
                     if (!CheckGameRules())
                     {
                         break;
@@ -121,7 +121,7 @@ public class CardView : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     bool CheckGameRules()
     {
         //check mana eventually
-        
+
         //check if valid from hand, etc
         return true;
     }

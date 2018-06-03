@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public CardView cardPrefab;
+    public GameObject cardPrefab;
 
     public HandView handView; // Attached in the editor
 
@@ -32,12 +32,23 @@ public class GameManager : MonoBehaviour
   	private void Start() {
         // Init list of players
         _players = new List<Player>();
-        Player p = new Player();
-        p.Init();
-        _players.Add(p);
+        Player p1 = new Player();
+        p1.Init(playerOneDeck);
 
-        GameObject.Instantiate(playerOneDeck);
+        foreach(var card in p1.hand){
+          GameObject cardView = Instantiate(cardPrefab);
+          handView.AddCardToHand(cardView);
+
+          CardView view = cardView.GetComponent<CardView>();
+          view.card = card;
+        }
+
+        _players.Add(p1);
   	}
+
+    public T CreateInstance<T>(T objectToClone)  where T : ScriptableObject{
+      return (T)Instantiate(objectToClone);
+    }
 
     public void EndTurn() {
         if (_players.Count != 2) {
