@@ -22,12 +22,16 @@ public class Player {
 	public int maxHandSize;
 
 	// Use this for initialization
-	public void Init() {
+	public void Init(Deck newDeck) {
 		currentMana = startingMana;
 		currentHealth = startingHealth;
 		turnCounter = 0;
 
-		// deck.ShuffleDeck();
+
+		deck = ScriptableObject.CreateInstance<Deck>();
+		// hand = newHand;
+
+		deck.ShuffleDeck();
 		// Draw a number of cards equal to the starting hand size
 		for(int i = 0; i < startingHandSize; i++){
 			// hand.Add(deck.DrawCard());

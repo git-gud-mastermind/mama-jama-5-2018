@@ -32,11 +32,9 @@ public class GameManager : MonoBehaviour
   	private void Start() {
         // Init list of players
         _players = new List<Player>();
-        Player p = new Player();
-        p.Init();
-        _players.Add(p);
-
-        GameObject.Instantiate(playerOneDeck);
+        Player p1 = new Player();
+        p1.Init(playerOneDeck);
+        _players.Add(p1);
   	}
 
     public void EndTurn() {

@@ -12,6 +12,13 @@ MonoBehaviour:
   m_Name: PlayerOneDeck
   m_EditorClassIdentifier: 
   cards:
-  - {fileID: 11400000, guid: 9eddf3011fc10c84baf4413354604cfa, type: 2}
-  - {fileID: 11400000, guid: 9eddf3011fc10c84baf4413354604cfa, type: 2}
-  - {fileID: 11400000, guid: 9eddf3011fc10c84baf4413354604cfa, type: 2}
+  - {fileID: 11400000, guid: 6e84f01d3c63d4aa2895118d9c2cfae6, type: 2}
+  - {fileID: 11400000, guid: ac05fa368d17b4e8cb6ee4b7b22e5b63, type: 2}
+  - {fileID: 11400000, guid: cb950e019786245d88822c16f5cee795, type: 2}
+  - {fileID: 11400000, guid: d0a898ca739c5445a8aaf8fe52d50d1d, type: 2}
+  - {fileID: 11400000, guid: a039e94bebde840dea10f89452df8aaf, type: 2}
+  - {fileID: 11400000, guid: 1057d393ae90a417ebc7b4a306500a84, type: 2}
+  - {fileID: 11400000, guid: 7aadd98d3c38c4f6fb8965a622c97da3, type: 2}
+  - {fileID: 11400000, guid: 8ada62edfd9bd4e8f9fe4c5b7ec99c40, type: 2}
+  - {fileID: 11400000, guid: e2ae801c0bba646f3931678abdef81e3, type: 2}
+  - {fileID: 11400000, guid: 84f1f96739b6b44b49c643b4cc2cfea8, type: 2}
