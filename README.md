@@ -2,4 +2,4 @@
 
 A month long group game jam project.
 
-Built in Unity version `2018.1.0f2`.
+Built in Unity version `2018.1.0f2`. 
