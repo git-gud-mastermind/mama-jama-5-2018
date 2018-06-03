@@ -27,14 +27,13 @@ public class Player {
 		currentHealth = startingHealth;
 		turnCounter = 0;
 
-
-		deck = ScriptableObject.CreateInstance<Deck>();
-		// hand = newHand;
-
+		// Instantiate Deck
+		deck = GameManager.instance.CreateInstance<Deck>(newDeck);
 		deck.ShuffleDeck();
+
 		// Draw a number of cards equal to the starting hand size
 		for(int i = 0; i < startingHandSize; i++){
-			// hand.Add(deck.DrawCard());
+			hand.Add(deck.DrawCard());
 		}
 	}
 

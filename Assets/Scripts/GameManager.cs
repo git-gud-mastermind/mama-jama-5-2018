@@ -37,6 +37,10 @@ public class GameManager : MonoBehaviour
         _players.Add(p1);
   	}
 
+    public T CreateInstance<T>(T objectToClone)  where T : ScriptableObject{
+      return (T)Instantiate(objectToClone);
+    }
+
     public void EndTurn() {
         if (_players.Count != 2) {
             Debug.LogError("Unexpected number of players: " + _players.Count);

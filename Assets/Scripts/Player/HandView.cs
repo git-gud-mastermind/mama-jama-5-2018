@@ -15,10 +15,9 @@ public class HandView : MonoBehaviour {
 	}
 
 	public Card AddCardToHand(Card cardDrawn){
-		// newCard = instantiate(cardView);                   // Instantiate Prefab
+		// newCard = Instantiate(CardView);                   // Instantiate Prefab
 		// newCard.getComponent<CardView>.setCard(cardDrawn); // Assign ScriptableObject to prefab
 		// return newCard;
-
 		return cardDrawn;
 	}
 }
