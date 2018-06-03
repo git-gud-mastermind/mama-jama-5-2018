@@ -38,6 +38,9 @@ public class GameManager : MonoBehaviour
         foreach(var card in p1.hand){
           GameObject cardView = Instantiate(cardPrefab);
           handView.AddCardToHand(cardView);
+
+          CardView view = cardView.GetComponent<CardView>();
+          view.card = card;
         }
 
         _players.Add(p1);
