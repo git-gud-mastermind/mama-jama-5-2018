@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48154cb05bbd8c34f8529ab4d209e4fb, type: 3}
+  m_Name: PlayerTwoDeck
+  m_EditorClassIdentifier: 
+  cards:
+  - {fileID: 11400000, guid: 870886e129f444288bf3915f495b283d, type: 2}
+  - {fileID: 11400000, guid: 4176034dea7ef4efc91f02b132651510, type: 2}
+  - {fileID: 11400000, guid: 8ada62edfd9bd4e8f9fe4c5b7ec99c40, type: 2}
+  - {fileID: 11400000, guid: 53ebf7db109434eab94b2982fd0e1875, type: 2}
+  - {fileID: 11400000, guid: a3a7d7304c9da4a3189663fea2f6532c, type: 2}

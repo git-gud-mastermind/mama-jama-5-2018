@@ -23,6 +23,8 @@ public class CardView : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 	public Image cardArt;
     public Image cardImage;
 
+		public bool isOnBoard;
+
     private Canvas _canvas;
     private RectTransform _canvasRectTransform;
     private Vector3 startDragPos;
@@ -113,7 +115,10 @@ public class CardView : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 								//check if pawn here
 								var cardComponent = result.gameObject.GetComponent<CardView>();
 								if (cardComponent != null) {
-									cardComponent.DealDamage(this.card.attackPower);
+									// Deal damage if this card belongs to the other player
+									if(cardComponent.player != this.player && isOnBoard == true){
+										cardComponent.DealDamage(this.card.attackPower);
+									}
 								}
 
 								// check if we can drop card here
@@ -128,7 +133,8 @@ public class CardView : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
                     transform.SetParent(boardPlacement.PawnArea);
                     setPlacement = true;
-                    break;
+										isOnBoard = true;
+										break;
                 }
 
 

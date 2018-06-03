@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 {
     public GameObject cardPrefab;
 
+    public GameObject opponentBoard;
+
     public HandView handView; // Attached in the editor
 
     List<Player> _players;
@@ -37,6 +39,7 @@ public class GameManager : MonoBehaviour
         Player p1 = new Player();
         p1.Init(playerOneDeck);
 
+        // Create player one hand
         foreach(var card in p1.hand){
           GameObject cardView = Instantiate(cardPrefab);
           handView.AddCardToHand(cardView);
@@ -46,7 +49,19 @@ public class GameManager : MonoBehaviour
           view.player = p1;
         }
 
-        _players.Add(p1);
+        // Create Player Two
+        Player p2 = new Player();
+        p2.Init(playerTwoDeck);
+
+        // Create player 2 hand
+        foreach(var card in p2.hand){
+          GameObject cardView = Instantiate(cardPrefab);
+          cardView.transform.SetParent(opponentBoard.transform);
+
+          CardView view = cardView.GetComponent<CardView>();
+          view.card = card;
+          view.player = p2;
+        }
   	}
 
     public T CreateInstance<T>(T objectToClone)  where T : ScriptableObject{

@@ -765,9 +765,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardPrefab: {fileID: 1949439815711240, guid: e9f79e64eca772c428cc0eaf531943bc, type: 2}
+  opponentBoard: {fileID: 1851023365}
   handView: {fileID: 1121123585}
   playerOneDeck: {fileID: 11400000, guid: 7f09f74c77d912444b254c72a7b72387, type: 2}
-  playerTwoDeck: {fileID: 0}
+  playerTwoDeck: {fileID: 11400000, guid: 2bb07dc4a88c7e44093d810af6a133c6, type: 2}
 --- !u!114 &577437508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2405,7 +2406,7 @@ GameObject:
   - component: {fileID: 1851023366}
   - component: {fileID: 1851023367}
   m_Layer: 5
-  m_Name: Pawn Layout Group
+  m_Name: Opponent Pawn Layout Group
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
