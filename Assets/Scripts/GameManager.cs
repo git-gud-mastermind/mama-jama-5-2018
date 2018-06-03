@@ -32,6 +32,8 @@ public class GameManager : MonoBehaviour
   	private void Start() {
         // Init list of players
         _players = new List<Player>();
+
+        // Create Player one
         Player p1 = new Player();
         p1.Init(playerOneDeck);
 
@@ -41,6 +43,7 @@ public class GameManager : MonoBehaviour
 
           CardView view = cardView.GetComponent<CardView>();
           view.card = card;
+          view.player = p1;
         }
 
         _players.Add(p1);

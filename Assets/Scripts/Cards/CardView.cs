@@ -10,6 +10,8 @@ public class CardView : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
 	public Card card;
 
+	public Player player; // The player that owns this card
+
 	public TextMeshProUGUI cardName;
 	public TextMeshProUGUI type;
 	public TextMeshProUGUI abilities;
