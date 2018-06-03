@@ -1938,6 +1938,7 @@ MonoBehaviour:
   connectionReqdObjects:
   - {fileID: 838287783}
   - {fileID: 2109026354}
+  Canvas: {fileID: 689578867}
   infoText: {fileID: 719853889}
   waitingTexts:
   - Waiting for an idle god
@@ -1945,6 +1946,15 @@ MonoBehaviour:
   - ..Waiting for an idle god..
   - '...Waiting for an idle god...'
   connectionSuccessText: Call on the Fates
+  allowSinglePlayer: 0
+  OnRoomReady:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  TesterMenuPrefab: {fileID: 114999930340546046, guid: 797d549c7bf923946aeed817613100d1,
+    type: 2}
+  TesterMenu: {fileID: 0}
 --- !u!1 &1333817795
 GameObject:
   m_ObjectHideFlags: 0
